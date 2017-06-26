@@ -23,8 +23,8 @@
         <!-- 标签页 -->
         <div class="content margin-padding-0">
         	<div class="tabs">
-	        	<div id="accounting" class="tab active" style="overflow-y:scroll">
-	        		<div class="card" style="position:fixed;width:102%;z-index:2;margin-top:0;">
+	        	<div id="accounting" class="tab active my-scroll-y">
+	        		<div class="card my-card">
         				<div class="card-content">
         					<div class="card-content-inner">
 			        			<div class="content-padded grid-demo">
@@ -51,66 +51,101 @@
 	        				</div>
         				</div>
         			</div>
-        			<div class="card" style="margin-bottom:3rem;margin-top:9rem;">
+        			<div class="card my-detail-card">
         				<div class="card-content">
         					<div class="card-content-inner">
-        						<table>
+        					<!-- <div class="div-line-y"></div> -->
+        					<!-- <div style="border:1px solid #C1C1C1;width:40%;height:1.2rem;border-radius:5rem;margin:0 auto;text-align:center">
+        						<span>2017-6-26</span>
+        						<input id="my-date" type="text" style="border:none;width:70%;" value="2017-06-26"/>
+        					</div> -->
+        					<div style="width:100%">
+        						<input id="my-date" type="text" style="border:1px solid #C1C1C1;width:40%;border-radius:5rem;margin:0 auto;text-align:center;font-size:0.8rem;display:block;" value="2017-06-26" >
+        					</div>
+        						<table class="my-table">
         							<tr>
-        								<td class="my-right-line">haha</td>
+        								<td></td>
+        								<td></td>
+        								<td><span class="icon iconfont icon-yifu1"></span></td>
+        								<td class="my-bottom-line">购物</td>
+        								<td class="text-red my-bottom-line">256.78</td>
         							</tr>
         							<tr>
-        								<td class="my-right-line">haha</td>
+        								<td class="text-green my-bottom-line">3000.00</td>
+        								<td class="my-bottom-line">工资</td>
+        								<td><span class="icon iconfont icon-gongzi3"></span></td>
+        								<td></td>
+        								<td></td>
         							</tr>
         							<tr>
-        								<td class="my-right-line">haha</td>
+        								<td class="text-green my-bottom-line">280.00</td>
+        								<td class="my-bottom-line">兼职</td>
+        								<td><span class="icon iconfont icon-jianzhi"></span></td>
+        								<td></td>
+        								<td></td>
         							</tr>
         							<tr>
-        								<td class="my-right-line">haha</td>
+        								<td></td>
+        								<td></td>
+        								<td><span class="icon iconfont icon-jiaotong"></span></td>
+        								<td class="my-bottom-line">交通</td>
+        								<td class="text-red my-bottom-line">8.00</td>
         							</tr>
         							<tr>
-        								<td class="my-right-line">haha</td>
+        								<td class="text-green my-bottom-line">212.00</td>
+        								<td class="my-bottom-line">退款</td>
+        								<td><span class="icon iconfont icon-tuikuan-"></span></td>
+        								<td></td>
+        								<td></td>
         							</tr>
         							<tr>
-        								<td class="my-right-line">haha</td>
+        								<td></td>
+        								<td></td>
+        								<td><span class="icon iconfont icon-qita"></span></td>
+        								<td class="my-bottom-line">其他</td>
+        								<td class="text-red my-bottom-line">25.00</td>
         							</tr>
         							<tr>
-        								<td>haha</td>
+        								<td class="text-green my-bottom-line">280.00</td>
+        								<td class="my-bottom-line">彩票</td>
+        								<td><span class="icon iconfont icon-caipiao"></span></td>
+        								<td></td>
+        								<td></td>
         							</tr>
         							<tr>
-        								<td>haha</td>
+        								<td></td>
+        								<td></td>
+        								<td><span class="icon iconfont icon-zhusu"></span></td>
+        								<td class="my-bottom-line">住宿</td>
+        								<td class="text-red my-bottom-line">800.00</td>
         							</tr>
         							<tr>
-        								<td>haha</td>
+        								<td class="text-green my-bottom-line">300.00</td>
+        								<td class="my-bottom-line">红包</td>
+        								<td><span class="icon iconfont icon-hongbao"></span></td>
+        								<td></td>
+        								<td></td>
         							</tr>
         							<tr>
-        								<td>haha</td>
+        								<td></td>
+        								<td></td>
+        								<td><span class="icon iconfont icon-01"></span></td>
+        								<td class="my-bottom-line">信用卡</td>
+        								<td class="text-red my-bottom-line">816.45</td>
         							</tr>
         							<tr>
-        								<td>haha</td>
+        								<td></td>
+        								<td></td>
+        								<td><span class="icon iconfont icon-qita"></span></td>
+        								<td class="my-bottom-line">其他</td>
+        								<td class="text-red my-bottom-line">316.89</td>
         							</tr>
         							<tr>
-        								<td>haha</td>
-        							</tr>
-        							<tr>
-        								<td>haha</td>
-        							</tr>
-        							<tr>
-        								<td>haha</td>
-        							</tr>
-        							<tr>
-        								<td>haha</td>
-        							</tr>
-        							<tr>
-        								<td>haha</td>
-        							</tr>
-        							<tr>
-        								<td>haha</td>
-        							</tr>
-        							<tr>
-        								<td>haha</td>
-        							</tr>
-        							<tr>
-        								<td>haha</td>
+        								<td class="text-green my-bottom-line">282.12</td>
+        								<td class="my-bottom-line">奖金</td>
+        								<td><span class="icon iconfont icon-jianzhi"></span></td>
+        								<td></td>
+        								<td></td>
         							</tr>
         						</table>
         					</div>
@@ -173,6 +208,7 @@
     $('#accountBtn').click(accountInit);
     
     
+    
     //判断显示的是哪一个标签页，做出对应的动作
     function tabIndex(){
     	setTimeout(function(){
@@ -199,6 +235,11 @@
         addNumber(376.89,'pay');
         addNumber(2134.37,'balance');
     }
+    
+    //初始化日历选择器
+    $("#my-date").calendar({
+        value: ['2016/05/31']
+    });
     	
   	//将数字从0增加到指定数字,总共1秒
 	function addNumber(account,id){

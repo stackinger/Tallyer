@@ -1,6 +1,18 @@
-/*竖线*/
+/*右边框*/
 .my-right-line{
-	border-right:1px solid #f00 !important;
+	border-right:1px solid #EFEFF4 !important;
+}
+/* 下边框 */
+.my-bottom-line{
+	border-bottom:1px solid #C1C1C1;
+}
+/* div画出竖线 */
+.div-line-y{
+	width:1px;
+	background:#EFEFF4;
+	height:1000rem;
+	position:fixed;
+	margin-left:46.5%;
 }
 /* 收入支出数字 */
 .text-size-2{
@@ -13,8 +25,37 @@
 }
 /* 字体颜色 */
 .text-green{
-	color:green;
+	color:green !important;
 }
 .text-red{
-	color:red;
+	color:red !important;
+}
+/* 收入支出card样式：设置位置，背景样式 */
+.my-card{
+	position:fixed !important;
+	width:102%;
+	z-index:2;
+	margin-top:0;
+	box-shadow:none;
+}
+/* 收入支出详细card样式 */
+.my-detail-card{
+	margin-bottom:3rem;
+	margin-top:9rem;
+	box-shadow:none;
+}
+/* 竖直方向可以滚动 */
+.my-scroll-y{
+	overflow-y:scroll;
+}
+/* table宽度为100%, 其下的4个td各占25% */
+.my-table{
+	width:100%;
+}
+.my-table td{
+	width:20%;
+	text-align:center;
+	font-size:0.8rem;
+	padding:0;
+	color:#A1A1A1;
 }
