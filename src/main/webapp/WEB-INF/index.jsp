@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
     <link rel="stylesheet" href="<c:url value='/resources/css/iconfont.css'/>">
     <link rel="stylesheet" href="<c:url value='/resources/css/index.css'/>">     
-
   </head>
   <body>
     <div class="page-group">
@@ -23,12 +22,13 @@
         <!-- 标签页 -->
         <div class="content margin-padding-0">
         	<div class="tabs">
+        		<!-- 记账 -->
 	        	<div id="accounting" class="tab active my-scroll-y">
 	        		<div class="card my-card">
         				<div class="card-content">
         					<div class="card-content-inner">
 			        			<div class="content-padded grid-demo">
-			        				<div class="row text-center"  style="margin-top:-2rem;">
+			        				<div class="row text-center margin-top-2">
 			        					<h1>Tallyer</h1>
 			        				</div>
 			        				<div class="row text-center">
@@ -55,12 +55,8 @@
         				<div class="card-content">
         					<div class="card-content-inner">
         					<!-- <div class="div-line-y"></div> -->
-        					<!-- <div style="border:1px solid #C1C1C1;width:40%;height:1.2rem;border-radius:5rem;margin:0 auto;text-align:center">
-        						<span>2017-6-26</span>
-        						<input id="my-date" type="text" style="border:none;width:70%;" value="2017-06-26"/>
-        					</div> -->
-        					<div style="width:100%">
-        						<input id="my-date" type="text" style="border:1px solid #C1C1C1;width:40%;border-radius:5rem;margin:0 auto;text-align:center;font-size:0.8rem;display:block;" value="2017-06-26" >
+        					<div class="width-100">
+        						<input id="my-date" type="text" class="my-date" >
         					</div>
         						<table class="my-table">
         							<tr>
@@ -152,14 +148,36 @@
         				</div>
         			</div>        		
         		</div>
-        		<!-- 记账 -->
+        		
         		
         		
         		<!-- 报表 -->
         		<div id="report" class="tab">
-        			<div class="content-block">
-        				<p>报表</p>
-        			</div>
+        			<div class="buttons-tab" style="position:fixed;width:104%;margin-top:-1.7rem;">
+				      <a href="#tab21" class="tab-link active button">支出</a>
+				      <a id="incomeTab" href="#tab22" class="tab-link button">收入</a>
+				      <a id="remainTab" href="#tab23" class="tab-link button">结余</a>
+				    </div>
+       				<div class="tabs">
+				      <div id="tab21" class="tab active">
+				        <div class="content-block" id="showChart" style="width:20rem;height:20rem;margin:1.7rem auto;">
+				          <!-- <p style="height:600px;">This is tab 1 content start</p>
+				          <p >This is tab 1 content end</p> -->
+				        </div>
+				      </div>
+				      <div id="tab22" class="tab">
+				        <div class="content-block" id="inChart" style="width:20rem;height:20rem;margin:1.7rem auto;">
+				          <!-- <p style="height:600px;">This is tab 2 content start</p>
+				          <p >This is tab 2 content end</p> -->
+				        </div>
+				      </div>
+				      <div id="tab23" class="tab">
+				        <div class="content-block" id="remainChart" style="width:20rem;height:20rem;margin:1.7rem auto;">
+				          <!-- <p style="height:600px;">This is tab 3 content start</p>
+				          <p >This is tab 3 content end</p> -->
+				        </div>
+				      </div>
+				    </div>
         		</div>
         		
         		<!-- 资金 -->
@@ -203,6 +221,7 @@
     <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
     <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
     <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='<c:url value='/resources/js/echarts.js'/>' charset='utf-8'></script>
     <script>
     accountInit();
     $('#accountBtn').click(accountInit);
@@ -236,10 +255,31 @@
         addNumber(2134.37,'balance');
     }
     
-    //初始化日历选择器
-    $("#my-date").calendar({
-        value: ['2016/05/31']
-    });
+    //获取当前年月日，格式 2017/06/27,初始化日历选择器
+    getDate()
+    function getDate(){
+    	var myDate = new Date();
+    	var year = myDate.getFullYear();
+    	var month = toInt2(myDate.getMonth()+1);
+    	var day = toInt2(myDate.getDate());
+    	var b = year+"-"+month+"-"+day;
+    	$("#my-date").val(b);
+    	//初始化日历选择器
+    	//在IOS设备上2017-06-07这样的格式日历显示为NaN,改为2017/06/07则没有问题
+    	var a = year+"/"+month+"/"+day;
+        $("#my-date").calendar({
+            value: [a]
+        });
+    }
+    //判断月份，日期，不满两位的补0
+    function toInt2(x){
+    	var y = x.toString();
+    	if(y.length<2){
+    		return '0'+y;
+    	}else{
+    		return y;
+    	}
+    }
     	
   	//将数字从0增加到指定数字,总共1秒
 	function addNumber(account,id){
@@ -276,6 +316,91 @@
     }
 	
 	/* 报表页面js方法代码 */
+	//支出饼图
+	var option = {
+	    series : [
+	        {
+	            name:'面积模式',
+	            type:'pie',
+	            radius : [30, 110],
+	            center : ['50%', '50%'],
+	            roseType : 'area',
+	            data:[
+	                {value:10, name:'rose1'},
+	                {value:5, name:'rose2'},
+	                {value:15, name:'rose3'},
+	                {value:25, name:'rose4'},
+	                {value:20, name:'rose5'},
+	                {value:35, name:'rose6'},
+	                {value:30, name:'rose7'},
+	                {value:40, name:'rose8'}
+	            ]
+	        }
+	    ]
+	};
+	//收入饼图
+	var inOption = {
+	    series : [
+	        {
+	            name:'面积模式',
+	            type:'pie',
+	            radius : [30, 110],
+	            center : ['50%', '50%'],
+	            roseType : 'area',
+	            data:[
+	                {value:10, name:'rose1'},
+	                {value:5, name:'rose2'},
+	                {value:15, name:'rose3'},
+	                {value:25, name:'rose4'},
+	                {value:20, name:'rose5'},
+	                {value:35, name:'rose6'},
+	                {value:30, name:'rose7'},
+	                {value:40, name:'rose8'}
+	            ]
+	        }
+	    ]
+	};
+	//结余饼图
+	var remainOption = {
+	    series : [
+	        {
+	            name:'面积模式',
+	            type:'pie',
+	            radius : [30, 110],
+	            center : ['50%', '50%'],
+	            roseType : 'area',
+	            data:[
+	                {value:10, name:'rose1'},
+	                {value:5, name:'rose2'},
+	                {value:15, name:'rose3'},
+	                {value:25, name:'rose4'},
+	                {value:20, name:'rose5'},
+	                {value:35, name:'rose6'},
+	                {value:30, name:'rose7'},
+	                {value:40, name:'rose8'}
+	            ]
+	        }
+	    ]
+	};
+	//载入支出图表
+	$('#reportBtn').click(showChart);
+	function showChart() {
+	    chartOutChar = echarts.init(document.getElementById('showChart'));
+	    chartOutChar.setOption(option);
+	}
+	//载入收入图表
+	$('#incomeTab').click(inChart);
+	function inChart() {
+	    chartOutChar = echarts.init(document.getElementById('inChart'));
+	    chartOutChar.setOption(inOption);
+	}
+	//载入结余图表
+	$('#remainTab').click(remainChart);
+	function remainChart() {
+	    chartOutChar = echarts.init(document.getElementById('remainChart'));
+	    chartOutChar.setOption(remainOption);
+	}
+	
 	
 	/* 资金页面js方法代码 */
 	

@@ -59,3 +59,21 @@
 	padding:0;
 	color:#A1A1A1;
 }
+/* 缩小标题Tallyer与页面顶部的距离 */
+.margin-top-2{
+	margin-top:-2rem;
+}
+/* 宽度100% */
+.width-100{
+	width:100%;
+}
+/* 日历输入框位置的样式 */
+.my-date{
+	border:1px solid #C1C1C1;
+	width:40%;
+	border-radius:5rem;
+	margin:0 auto;
+	text-align:center;
+	font-size:0.8rem;
+	display:block;
+}
